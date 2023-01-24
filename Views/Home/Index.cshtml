@@ -1,0 +1,41 @@
+﻿@model HomeViewModel
+@{ 
+    int availableBooks = Model.BooksCount - Model.LendedBooksCount;
+}
+
+<h1>Aplicatie Gestionare Biblioteca</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Numar clienti
+            </div>
+            <div class="panel-body">
+                Numarul de clienti: @Model.CustomersCount 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Numar de autori
+            </div>
+            <div class="panel-body">
+                Au fost adaugati  @Model.AuthorsCount autori in baza de date
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Numar carti 
+            </div>
+            <div class="panel-body">
+                Sunt @availableBooks carti disponibile dintr-un total de @Model.BooksCount
+            </div>
+        </div>
+    </div>
+</div>
+    
+

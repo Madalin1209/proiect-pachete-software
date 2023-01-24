@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CustomerViewModel>
+
+
+<a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Customer" asp-action="Create">Adauga client nou</a>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Nr. Carti imprumutate</th>
+            <th>Afiseaza carti imprumutate</th>
+            <th>Editeaza client</th>
+            <th>Sterge client</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customerVM in Model)
+        {
+            <tr>
+                <td>@customerVM.Customer.CustomerId</td>
+                <td>@customerVM.Customer.Name</td>
+                <td>@customerVM.BookCount</td>
+                @if (customerVM.BookCount == 0)
+                {
+                    <td><a class="btn btn-default" asp-area="">Afiseaza</a></td>
+                }
+                else
+                {
+                    <td><a class="btn btn-info" asp-area="" asp-controller="Book" asp-action="List" asp-route-borrowerId="@customerVM.Customer.CustomerId">Afiseaza</a></td>
+                }
+                <td><a class="btn btn-info" asp-area="" asp-controller="Customer" asp-action="Update" asp-route-id="@customerVM.Customer.CustomerId">Editeaza</a></td>
+                <td><a class="btn btn-danger" asp-area="" asp-controller="Customer" asp-action="Delete" asp-route-id="@customerVM.Customer.CustomerId">Sterge</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

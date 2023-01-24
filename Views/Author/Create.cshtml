@@ -1,0 +1,22 @@
+﻿@model CreateAuthorViewModel
+
+<div class="row orderForm">
+    <form asp-controller="Author" asp-action="Create" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.Referer)
+
+        <h3 class="col-md-offset-2">Creeaza un nou autor</h3>
+        <div class="form-group">
+            <label asp-for="Author.Name" class="col-md-2 control-label">Nume</label>
+            <div class="col-md-6">
+                <input asp-for="Author.Name" class="form-control" placeholder="Adauga nume autor" />
+                <span asp-validation-for="Author.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-offset-2 col-md-6">
+                <input class="btn btn-default" type="submit" value="Inapoi" asp-controller="Author" asp-action="List" />
+                <input class="btn btn-success" type="submit" value="Creeaza" />
+            </div>
+        </div>
+    </form>
+</div>
